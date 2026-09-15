@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agenda · Escuela de Posgrado FCA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand-container">
+      <svg class="fca-logo" viewBox="0 0 520 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M34.7 18C15.5 18 0 36.8 0 60s15.5 42 34.7 42 34.7-18.8 34.7-42S53.9 18 34.7 18zm0 76C19.8 94 7.8 78.8 7.8 60S19.8 26 34.7 26 61.6 41.2 61.6 60 49.6 94 34.7 94z" fill="#FFF"/>
+        <path d="M19.5 54c3.5-3.2 8.4-5.2 15.2-5.2 6.8 0 11.7 2 15.2 5.2l-2.6 4.1c-2.9-2.7-7-4.3-12.6-4.3-5.6 0-9.7 1.6-12.6 4.3l-2.6-4.1zM23.1 66.5h23.2v5H23.1v-5z" fill="#FFF"/>
+        <path d="M85 24h12v42.5c0 14.8 8.2 22.5 20.3 22.5 12.1 0 20.3-7.7 20.3-22.5V24h12v42.5c0 21.8-13.8 33.5-32.3 33.5C98.8 100 85 88.3 85 66.5V24zM161 24h11.5l25.8 45.2V24h11.2v74h-11.5L172.2 52.8V98H161V24zM228 62c0-21.5 15.8-38 37.5-38 14.2 0 24.5 6.5 30.2 17l-9.8 5.5c-4.1-7.2-11.2-11.5-20.4-11.5-14.8 0-25.2 11.2-25.2 27s10.4 27 25.2 27c9.2 0 16.3-4.3 20.4-11.5l9.8 5.5c-5.7 10.5-16 17-30.2 17C243.8 100 228 83.5 228 62zM313 24h12v42.5c0 14.8 8.2 22.5 20.3 22.5 12.1 0 20.3-7.7 20.3-22.5V24h12v42.5c0 21.8-13.8 33.5-32.3 33.5C326.8 100 313 88.3 313 66.5V24z" fill="#FFF"/>
+        <path d="M281 12v96h-3V12h3z" fill="#FFF"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M303 21h68v68h-68V21zm61.2 51.5c-1.8-1.5-4.2-2.5-7.2-2.5-4.2 0-7.8 2-10 5.2-2.2-3.2-5.8-5.2-10-5.2-3 0-5.4 1-7.2 2.5l-5.8-5c4-4.5 9.8-7.5 16.2-7.5 6.2 0 11.8 2.8 15.8 7.2 4-4.4 9.6-7.2 15.8-7.2 6.4 0 12.2 3 16.2 7.5l-5.8 5zM309 82c9.2-5.5 20.5-8.8 33-8.8 12.5 0 23.8 3.3 33 8.8l-4 5.2c-7.8-4.8-17.5-7.8-29-7.8-11.5 0-21.2 3-29 7.8l-4-5.2z" fill="#FFF"/>
+        <text x="385" y="42" fill="#FFF" font-family="sans-serif" font-weight="bold" font-size="15" letter-spacing="1">FACULTAD DE</text>
+        <text x="385" y="68" fill="#FFF" font-family="sans-serif" font-weight="900" font-size="26" letter-spacing="0.5">CIENCIAS</text>
+        <text x="385" y="94" fill="#FFF" font-family="sans-serif" font-weight="900" font-size="26" letter-spacing="0.5">AGRARIAS</text>
+      </svg>
+      <div class="brand">
+        <h1>Agenda</h1>
+        <p>Escuela de Posgrado</p>
+      </div>
+    </div>
+    <div class="headerActions">
+      <button class="btn headerLogin" id="adminBtn" onclick="toggleAdminAccess()">Administrar</button>
+      <div class="adminMinimal">
+        <button class="newActivityBtn" onclick="openModal()"><span>＋</span><span>Nueva actividad</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="viewIntro">
+      <div class="viewLabel" id="viewLabel">VISTA SEMANAL</div>
+      <div class="period periodLarge" id="period"></div>
+    </div>
+
+    <div class="topbar controlsBar">
+      <div class="viewNavRow">
+        <div class="seg viewSeg">
+          <button id="bday" onclick="setView('day')">Día</button>
+          <button id="bweek" onclick="setView('week')" class="active">Semanal</button>
+          <button id="bmonth" onclick="setView('month')">Mensual</button>
+        </div>
+        <div class="dateNav">
+          <button class="btn ghost" onclick="move(-1)">←</button>
+          <button class="btn ghost" onclick="goToday()">Hoy</button>
+          <button class="btn ghost" onclick="move(1)">→</button>
+        </div>
+      </div>
+      
+      <div class="searchAndFilters">
+        <div class="searchBox">
+          <input type="text" id="searchInput" placeholder="Buscar actividad, docente..." oninput="render()">
+        </div>
+        <div class="filters">
+          <select id="areaFilter" onchange="render()">
+            <option value="">Todas las áreas</option>
+            <option value="Secretaría Académica">Secretaría Académica</option>
+            <option value="Secretaría de Asuntos Estudiantiles y Bienestar de la Comunidad">Estudiantes y Bienestar</option>
+            <option value="Secretaría de Investigación, Internacionales y Posgrado">SIIP</option>
+            <option value="Secretaría de Vinculación y Extensión">Vinculación y Extensión</option>
+            <option value="Decanato">Decanato</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <select id="typeFilter" onchange="render()">
+            <option value="">Todos los tipos</option>
+            <option>Curso</option>
+            <option>Defensa de Tesis</option>
+            <option>Seminario</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i class="dot" style="background:#3c6fa8"></i>Académica</span>
+      <span><i class="dot" style="background:#8751a5"></i>Bienestar y Estudiantes</span>
+      <span><i class="dot" style="background:#007ea3"></i>SIIP</span>
+      <span><i class="dot" style="background:#c4771c"></i>Vinculación</span>
+      <span><i class="dot" style="background:#67823a"></i>Decanato</span>
+      <span><i class="dot" style="background:#6f7780"></i>Otro</span>
+    </div>
+    
+    <div class="publicHint" id="publicHint">Consulta pública · Actividades confirmadas.</div>
+    <div class="activityCount" id="activityCount"></div>
+    <section class="calendar" id="calendar"></section>
+  </main>
+
+  <!-- Modal Detalle -->
+  <div class="modal" id="detail">
+    <div class="panel detailPanel" id="detailPanel">
+      <div class="detailBadge" id="detailBadgeContainer"><span class="detailDot"></span><span id="dareaBadge"></span></div>
+      <h2 id="dtitle"></h2>
+      <div id="dbody"></div>
+
+      <!-- Desplegable y Edición para Mail (Oculto por defecto para vista pública) -->
+      <div class="mailAccordion" id="mailAccordion" style="display: none;">
+        <button class="mailHeaderBtn" onclick="toggleMailAccordion()">
+          <span>✉️ Generar mail / plantilla</span>
+          <span id="accordionArrow">▼</span>
+        </button>
+        <div class="mailContent" id="mailContent">
+          <div class="mailTabs">
+            <button class="mailTab active" id="tabConfirm" onclick="switchMailTemplate('confirm')">Confirmación</button>
+            <button class="mailTab" id="tabPostpone" onclick="switchMailTemplate('postpone')">Postergación</button>
+            <button class="mailTab" id="tabCancel" onclick="switchMailTemplate('cancel')">Cancelación</button>
+          </div>
+
+          <label style="font-size:11px; font-weight:800; color:var(--muted); display:block; margin-bottom:4px;">Asunto:</label>
+          <input type="text" class="mailInputSubject" id="editableSubject">
+
+          <label style="font-size:11px; font-weight:800; color:var(--muted); display:block; margin-bottom:4px;">Cuerpo del mensaje (editable):</label>
+          <textarea class="mailInputBody" id="editableBody"></textarea>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+            <button class="btn primary" style="font-size:12px; padding:8px 14px;" onclick="copyMailContent()">📋 Copiar mail</button>
+            <div id="adminMailStatusBtn"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top: 18px;">
+        <button class="btn primary" onclick="document.getElementById('detail').classList.remove('open')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Carga / Edición -->
+  <div class="modal" id="modal">
+    <div class="panel">
+      <h2>Carga de Actividad</h2>
+      <div class="form">
+        <div class="field full">
+          <label>Título</label>
+          <input id="title" placeholder="Ej. Curso de Posgrado en Fisiología Vegetal">
+        </div>
+
+        <div class="field">
+          <label>Tipo de actividad</label>
+          <select id="type" onchange="toggleOtherTypeField()">
+            <option value="Curso">Curso</option>
+            <option value="Defensa de Tesis">Defensa de Tesis</option>
+            <option value="Seminario">Seminario</option>
+            <option value="Otro">Otro...</option>
+          </select>
+        </div>
+        <div class="field full hidden" id="otherTypeField">
+          <label>Especificar tipo de actividad</label>
+          <input id="otherType" placeholder="Ej. Taller, Conferencia, Mesa Redonda...">
+        </div>
+
+        <div class="field">
+          <label>Área Responsable</label>
+          <select id="area" onchange="toggleOtherAreaField()">
+            <option value="Secretaría Académica">Secretaría Académica</option>
+            <option value="Secretaría de Asuntos Estudiantiles y Bienestar de la Comunidad">Secretaría de Asuntos Estudiantiles y Bienestar</option>
+            <option value="Secretaría de Investigación, Internacionales y Posgrado">Secretaría de Investigación, Internacionales y Posgrado</option>
+            <option value="Secretaría de Vinculación y Extensión">Secretaría de Vinculación y Extensión</option>
+            <option value="Decanato">Decanato</option>
+            <option value="Otro">Otro...</option>
+          </select>
+        </div>
+        <div class="field full hidden" id="otherAreaField">
+          <label>Especificar área responsable</label>
+          <input id="otherArea" placeholder="Ej. Departamento de Matemáticas, Biblioteca...">
+        </div>
+
+        <div class="field full">
+          <label>Responsable</label>
+          <input id="responsible" placeholder="Nombre y apellido del docente o agente">
+        </div>
+
+        <div class="field">
+          <label>Fecha de inicio</label>
+          <input id="startDate" type="date">
+        </div>
+        <div class="field">
+          <label>Fecha de finalización</label>
+          <input id="endDate" type="date">
+        </div>
+
+        <div class="field">
+          <label>Hora de inicio</label>
+          <input id="startTime" type="time" value="10:00">
+        </div>
+        <div class="field">
+          <label>Hora de finalización</label>
+          <input id="endTime" type="time" value="12:00">
+        </div>
+
+        <div class="field">
+          <label>Repetición</label>
+          <select id="repeat" onchange="toggleRepeatUntilField()">
+            <option value="Sin repetición">Sin repetición</option>
+            <option value="Todas las semanas">Todas las semanas</option>
+            <option value="15 días">Cada 15 días</option>
+          </select>
+        </div>
+        <div class="field hidden" id="repeatUntilField">
+          <label>Repetir hasta</label>
+          <input id="repeatUntilDate" type="date">
+        </div>
+
+        <div class="field">
+          <label>Modalidad</label>
+          <select id="mode" onchange="toggleModeFields()">
+            <option value="Presencial">Presencial</option>
+            <option value="Híbrida">Híbrida</option>
+            <option value="Virtual">Virtual</option>
+          </select>
+        </div>
+
+        <div class="field" id="roomContainer">
+          <label>Aula</label>
+          <select id="room" onchange="toggleOtherRoomField()">
+            <option value="Aula de Posgrado">Aula de Posgrado</option>
+            <option value="Otra">Otra...</option>
+          </select>
+        </div>
+        <div class="field full hidden" id="otherRoomField">
+          <label>Especificar aula</label>
+          <input id="otherRoom" placeholder="Ej. Aula Magna, Anfiteatro A, Laboratorio 2...">
+        </div>
+
+        <div class="field virtualField hidden" id="platformField">
+          <label>Plataforma</label>
+          <select id="platform">
+            <option value="Google Meet">Google Meet</option>
+            <option value="Microsoft Teams">Microsoft Teams</option>
+            <option value="Zoom">Zoom</option>
+            <option value="Otra">Otra</option>
+          </select>
+        </div>
+        <div class="field virtualField hidden" id="linkField">
+          <label>Enlace de la sala</label>
+          <input id="link" type="url" placeholder="https://...">
+        </div>
+
+        <div class="field virtualField hidden">
+          <label>Visibilidad del enlace</label>
+          <select id="linkPublic">
+            <option value="false">Privado (solo administradores)</option>
+            <option value="true">Público</option>
+          </select>
+        </div>
+
+        <div class="field virtualField hidden">
+          <label>Cuenta utilizada</label>
+          <input id="account" placeholder="Ej. posgrado@fca.uncu.edu.ar">
+        </div>
+
+        <div class="field full">
+          <label>Enlace para más información</label>
+          <input id="infoLink" type="url" placeholder="https://fca.uncuyo.edu.ar/...">
+        </div>
+
+        <div class="field full">
+          <label>Observaciones</label>
+          <textarea id="notes" rows="3" placeholder="Detalles adicionales..."></textarea>
+        </div>
+
+        <div class="field" id="recordingField">
+          <label>Requiere grabación</label>
+          <select id="needsRecording">
+            <option value="No">No</option>
+            <option value="Sí">Sí</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Estado</label>
+          <select id="status">
+            <option value="Confirmado">Confirmado</option>
+            <option value="A confirmar">A confirmar</option>
+            <option value="Cancelado">Cancelado</option>
+            <option value="Postergado">Postergado</option>
+          </select>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" onclick="closeModal()">Cancelar</button>
+        <button class="btn primary" id="saveActivityBtn" onclick="saveEvent()">Guardar registro</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Login Admin Real con Firebase -->
+  <div class="modal" id="loginModal">
+    <div class="panel" style="width:min(440px,100%)">
+      <h2>Acceso de administración</h2>
+      <div class="field" style="margin-top:14px">
+        <label>Correo Institucional</label>
+        <input id="adminEmail" type="email" placeholder="posgrado@fca.uncu.edu.ar">
+      </div>
+      <div class="field" style="margin-top:10px">
+        <label>Contraseña</label>
+        <input id="adminPassword" type="password" placeholder="••••••••">
+      </div>
+      <div class="actions">
+        <button class="btn ghost" onclick="document.getElementById('loginModal').classList.remove('open')">Cancelar</button>
+        <button class="btn primary" onclick="loginAdminReal()">Ingresar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
