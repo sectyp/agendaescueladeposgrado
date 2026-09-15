@@ -220,12 +220,24 @@ function showToast(msg) {
   }
 }
 
+window.togglePasswordVisibility = function() {
+  const passwordInput = document.getElementById('adminPassword');
+  if (passwordInput) {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  }
+};
+
 window.toggleAdminAccess = function() {
   if (isAdmin) {
     signOut(auth).then(() => showToast('Sesión cerrada'));
     return;
   }
   document.getElementById('adminPassword').value = '';
+  document.getElementById('adminPassword').type = 'password';
   document.getElementById('loginModal').classList.add('open');
   setTimeout(() => document.getElementById('adminEmail').focus(), 100);
 };
@@ -335,7 +347,7 @@ window.saveEvent = async function() {
     mailSent: editingIndex !== null ? (events[editingIndex].mailSent || false) : false
   };
 
-  // Cierre inmediato del modal
+  // Forzar cierre inmediato
   window.closeModal();
 
   try {

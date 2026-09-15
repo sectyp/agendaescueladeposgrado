@@ -43,7 +43,7 @@ header {
   background: var(--accent) !important;
   color: #fff !important;
   border-bottom: 1px solid var(--accent-dark) !important;
-  padding: 12px 20px;
+  padding: 10px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,17 +52,18 @@ header {
   z-index: 10;
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 
 .brand-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  max-width: calc(100% - 130px);
 }
 
 .fca-logo {
-  height: 38px;
+  height: 34px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -70,44 +71,47 @@ header {
 
 .brand-divider {
   width: 1px;
-  height: 30px;
+  height: 26px;
   background-color: rgba(255, 255, 255, 0.4);
 }
 
 .brand h1 {
-  font-size: 16px;
+  font-size: 15px;
   margin: 0;
   color: #fff;
   letter-spacing: -.02em;
   font-weight: 800;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .brand p {
   margin: 2px 0 0;
   color: rgba(255, 255, 255, .9);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .headerActions { 
   display: flex; 
-  gap: 10px; 
+  gap: 8px; 
   align-items: center; 
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .btn {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 7px 13px;
   font-weight: 700;
   cursor: pointer;
   transition: .18s ease;
   background: #fff;
   color: var(--text);
-  font-size: 12px;
+  font-size: 11px;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   display: inline-flex;
@@ -124,47 +128,47 @@ header {
 header .headerLogin { 
   background: transparent !important; 
   color: #fff !important; 
-  border: 1px solid rgba(255, 255, 255, .5) !important; 
+  border: 1px solid rgba(255, 255, 255, .6) !important; 
 }
 header .headerLogin:hover { background: rgba(255, 255, 255, .15) !important; }
 
-main { max-width: 1440px; margin: 16px auto; padding: 0 16px; }
+main { max-width: 1440px; margin: 16px auto; padding: 0 14px; }
 
-.viewIntro { margin: 4px 0 16px; }
+.viewIntro { margin: 4px 0 14px; }
 .viewLabel { font-size: 11px; font-weight: 800; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; }
-.periodLarge { font-size: clamp(20px, 3vw, 34px); font-weight: 800; color: #233015; margin: 0; }
+.periodLarge { font-size: clamp(18px, 3vw, 32px); font-weight: 800; color: #233015; margin: 0; }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-.viewNavRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; justify-content: space-between; }
+.viewNavRow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; justify-content: space-between; }
 
 .viewSeg { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; box-shadow: var(--shadow); }
 .viewSeg button { 
-  border: 0; border-right: 1px solid var(--line); padding: 8px 14px; font-weight: 700; background: transparent; 
-  cursor: pointer; color: #3f4740; font-family: 'Montserrat', sans-serif; font-size: 12px; transition: .15s ease;
+  border: 0; border-right: 1px solid var(--line); padding: 8px 12px; font-weight: 700; background: transparent; 
+  cursor: pointer; color: #3f4740; font-family: 'Montserrat', sans-serif; font-size: 11px; transition: .15s ease;
 }
 .viewSeg button.active { background: var(--accent) !important; color: #fff !important; }
 .viewSeg button:hover:not(.active) { background: var(--accent-bg); color: var(--accent-dark); }
 
-.dateNav { display: flex; gap: 6px; }
+.dateNav { display: flex; gap: 4px; }
 
-.searchAndFilters { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; width: 100%; margin-top: 6px; }
-.searchBox { flex: 1; min-width: 200px; }
+.searchAndFilters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; width: 100%; margin-top: 4px; }
+.searchBox { flex: 1; min-width: 100%; }
 .searchBox input {
-  width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff;
+  width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff;
   font-family: 'Montserrat', sans-serif; font-size: 12px; box-shadow: var(--shadow); color: var(--text);
 }
 .searchBox input:focus, .filters select:focus { outline: none; border-color: var(--accent); }
 .filters { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
 .filters select { 
-  flex: 1; min-width: 140px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; 
-  font-family: 'Montserrat', sans-serif; font-size: 12px; box-shadow: var(--shadow); color: var(--text);
+  flex: 1; min-width: 130px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff; 
+  font-family: 'Montserrat', sans-serif; font-size: 11px; box-shadow: var(--shadow); color: var(--text);
 }
 
-.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; background: #fff; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 14px; font-weight: 600; }
+.legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; background: #fff; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 12px; font-weight: 600; }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
 
-.publicHint { font-size: 11px; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
-.activityCount { font-size: 12px; color: var(--muted); margin-bottom: 12px; font-weight: 600; }
+.publicHint { font-size: 11px; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+.activityCount { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-weight: 600; }
 
 .calendar { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; box-shadow: var(--shadow); }
 .weekhead, .weekgrid { display: grid; grid-template-columns: 50px repeat(7, minmax(110px, 1fr)); min-width: 820px; }
@@ -216,7 +220,7 @@ main { max-width: 1440px; margin: 16px auto; padding: 0 16px; }
 
 body.admin-mode .adminMinimal { display: flex !important; }
 .adminMinimal { display: none; align-items: center; gap: 6px; position: relative; }
-.newActivityBtn { border: 0; background: var(--accent) !important; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 800; cursor: pointer; font-size: 12px; font-family: 'Montserrat', sans-serif; transition: .18s ease; }
+.newActivityBtn { border: 0; background: var(--accent) !important; color: #fff; padding: 7px 13px; border-radius: 999px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: 'Montserrat', sans-serif; transition: .18s ease; }
 .newActivityBtn:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
 
 .modal { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: center; justify-content: center; padding: 14px; z-index: 200; backdrop-filter: blur(4px); }
@@ -229,6 +233,35 @@ body.admin-mode .adminMinimal { display: flex !important; }
 .field.full { grid-column: 1/-1; }
 .field label { font-size: 11px; font-weight: 800; color: #2d382e; }
 .field input, .field select, .field textarea { padding: 9px; border: 1px solid var(--line); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 12px; }
+
+/* Contenedor de Contraseña con botón de Ojo */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px !important;
+}
+.toggle-password-btn {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity .15s ease;
+}
+.toggle-password-btn:hover {
+  opacity: 1;
+}
 
 .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 .hidden { display: none !important; }
@@ -261,12 +294,12 @@ body.admin-mode .adminMinimal { display: flex !important; }
 .toast.show { opacity: 1; }
 
 @media (max-width: 600px) {
-  header { padding: 10px 12px; }
-  .fca-logo { height: 32px; }
-  .brand h1 { font-size: 14px; }
-  .brand p { font-size: 10px; }
-  .brand-divider { height: 24px; }
+  header { padding: 8px 10px; }
+  .fca-logo { height: 28px; }
+  .brand h1 { font-size: 13px; }
+  .brand p { font-size: 9px; }
+  .brand-divider { height: 20px; }
   .form, .detailGrid { grid-template-columns: 1fr; }
-  .viewSeg button { padding: 6px 10px; font-size: 11px; }
-  .btn { padding: 7px 12px; font-size: 11px; }
+  .viewSeg button { padding: 6px 8px; font-size: 10px; }
+  .btn { padding: 6px 10px; font-size: 10px; }
 }

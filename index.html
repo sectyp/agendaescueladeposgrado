@@ -284,7 +284,7 @@
     </div>
   </div>
 
-  <!-- Modal Login Admin -->
+  <!-- Modal Login Admin con opción de Ver Contraseña -->
   <div class="modal" id="loginModal">
     <div class="panel" style="width:min(440px,100%)">
       <h2>Acceso de administración</h2>
@@ -293,10 +293,15 @@
         <label>Correo Institucional</label>
         <input id="adminEmail" type="email" placeholder="sectyp@fca.uncu.edu.ar">
       </div>
+      
       <div class="field" style="margin-top:10px">
         <label>Contraseña</label>
-        <input id="adminPassword" type="password" placeholder="••••••••">
+        <div class="password-wrapper">
+          <input id="adminPassword" type="password" placeholder="••••••••">
+          <button type="button" class="toggle-password-btn" onclick="togglePasswordVisibility()" title="Ver u ocultar contraseña">👁️</button>
+        </div>
       </div>
+
       <div class="actions">
         <button class="btn ghost" onclick="document.getElementById('loginModal').classList.remove('open')">Cancelar</button>
         <button class="btn primary" onclick="loginAdminReal()">Ingresar</button>
