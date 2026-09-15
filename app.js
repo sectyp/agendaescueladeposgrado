@@ -2,14 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Credenciales tomadas de tu pantalla
+// Credenciales reales del proyecto agenda-posgrado-fca
 const firebaseConfig = {
   apiKey: "AIzaSyCuC-e4Cv4JaIUAdq3Ecudf8aqK4VdxQ84",
   authDomain: "agenda-posgrado-fca.firebaseapp.com",
   projectId: "agenda-posgrado-fca",
   storageBucket: "agenda-posgrado-fca.firebasestorage.app",
   messagingSenderId: "514757808587",
-  appId: "TU_APP_ID_AQUI" 
+  appId: "1:514757808587:web:46bad19cf2ae430cc4e64e"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -576,9 +576,9 @@ window.deleteEvent = async function(i) {
   }
 };
 
-// Listener de Autenticación
+// Listener de Autenticación exclusivo para el correo de la Secretaría
 onAuthStateChanged(auth, (user) => {
-  if (user) {
+  if (user && user.email === "sectyp@fca.uncu.edu.ar") {
     isAdmin = true;
     document.body.classList.add('admin-mode');
     document.getElementById('adminBtn').textContent = 'Cerrar Sesión';
