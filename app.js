@@ -163,7 +163,7 @@ function renderWeek() {
 function renderDay() {
   let p = document.getElementById('period');
   if (p) p.textContent = `${days[current.getDay()]} ${current.getDate()} de ${months[current.getMonth()]} de ${current.getFullYear()}`;
-  let html = `<div class='weekhead' style='grid-template-columns:90px 1fr'><div></div><div>${days[current.getDay()]} ${current.getDate()}</div></div><div class='daywrap'>`;
+  let html = `<div class='weekhead' style='grid-template-columns:50px 1fr; min-width:auto;'><div style='padding:10px 4px;'></div><div>${days[current.getDay()]} ${current.getDate()}</div></div><div class='daywrap'>`;
   let d = localIso(current), fs = filtered();
   hours.forEach(h => {
     let es = fs.filter(e => e.startDate === d && parseInt(e.startTime) === h);
@@ -335,6 +335,7 @@ window.saveEvent = async function() {
     mailSent: editingIndex !== null ? (events[editingIndex].mailSent || false) : false
   };
 
+  // Cierre inmediato del modal
   window.closeModal();
 
   try {

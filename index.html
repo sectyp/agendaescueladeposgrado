@@ -20,10 +20,10 @@
       </div>
     </div>
     <div class="headerActions">
-      <button class="btn headerLogin" id="adminBtn" onclick="toggleAdminAccess()">Administrar</button>
       <div class="adminMinimal">
         <button class="newActivityBtn" onclick="openModal()"><span>＋</span><span>Nueva actividad</span></button>
       </div>
+      <button class="btn headerLogin" id="adminBtn" onclick="toggleAdminAccess()">Administrar</button>
     </div>
   </header>
 
@@ -93,7 +93,7 @@
       <h2 id="dtitle"></h2>
       <div id="dbody"></div>
 
-      <!-- Desplegable y Edición para Mail (Oculto por defecto para la vista pública) -->
+      <!-- Desplegable y Edición para Mail -->
       <div class="mailAccordion" id="mailAccordion" style="display: none;">
         <button class="mailHeaderBtn" onclick="toggleMailAccordion()">
           <span>✉️ Generar mail / plantilla</span>
@@ -284,7 +284,7 @@
     </div>
   </div>
 
-  <!-- Modal Login Admin con Correo/Contraseña -->
+  <!-- Modal Login Admin -->
   <div class="modal" id="loginModal">
     <div class="panel" style="width:min(440px,100%)">
       <h2>Acceso de administración</h2>
