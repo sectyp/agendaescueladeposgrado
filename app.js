@@ -291,7 +291,8 @@ window.openModal = function(index = null, isDuplicate = false) {
 };
 
 window.closeModal = function() {
-  document.getElementById('modal').classList.remove('open');
+  const modalEl = document.getElementById('modal');
+  if (modalEl) modalEl.classList.remove('open');
   editingIndex = null;
 };
 
@@ -334,6 +335,8 @@ window.saveEvent = async function() {
     mailSent: editingIndex !== null ? (events[editingIndex].mailSent || false) : false
   };
 
+  window.closeModal();
+
   try {
     if (editingIndex !== null && events[editingIndex]) {
       await updateDoc(doc(db, "events", events[editingIndex].id), data);
@@ -345,8 +348,6 @@ window.saveEvent = async function() {
   } catch (e) {
     showToast('Error de permisos o conexión');
   }
-
-  closeModal();
 };
 
 window.toggleMailAccordion = function() {
