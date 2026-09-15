@@ -347,7 +347,7 @@ window.saveEvent = async function() {
     mailSent: editingIndex !== null ? (events[editingIndex].mailSent || false) : false
   };
 
-  // Forzar cierre inmediato
+  // Forzar cierre inmediato de la caja de diálogo
   window.closeModal();
 
   try {
@@ -592,15 +592,22 @@ window.deleteEvent = async function(i) {
 
 // Listener de Autenticación exclusivo para el correo de la Secretaría
 onAuthStateChanged(auth, (user) => {
+  const adminBtn = document.getElementById('adminBtn');
   if (user && user.email === "sectyp@fca.uncu.edu.ar") {
     isAdmin = true;
     document.body.classList.add('admin-mode');
-    document.getElementById('adminBtn').textContent = 'Cerrar Sesión';
+    if (adminBtn) {
+      adminBtn.title = "Cerrar Sesión";
+      adminBtn.innerHTML = "🚪";
+    }
     document.getElementById('publicHint').textContent = `Modo administrador (${user.email})`;
   } else {
     isAdmin = false;
     document.body.classList.remove('admin-mode');
-    document.getElementById('adminBtn').textContent = 'Administrar';
+    if (adminBtn) {
+      adminBtn.title = "Acceso de Administración";
+      adminBtn.innerHTML = "⚙️";
+    }
     document.getElementById('publicHint').textContent = 'Consulta pública · Actividades confirmadas.';
   }
   render();

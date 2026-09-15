@@ -59,7 +59,6 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: calc(100% - 130px);
 }
 
 .fca-logo {
@@ -125,12 +124,20 @@ header {
 .primary:hover { background: var(--accent-dark) !important; }
 .ghost { background: transparent; border: 1px solid var(--line); }
 
-header .headerLogin { 
+/* Estilo del Botón de Engranaje para Administración */
+header .headerLoginIcon { 
   background: transparent !important; 
   color: #fff !important; 
   border: 1px solid rgba(255, 255, 255, .6) !important; 
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  font-size: 16px;
 }
-header .headerLogin:hover { background: rgba(255, 255, 255, .15) !important; }
+header .headerLoginIcon:hover { 
+  background: rgba(255, 255, 255, .15) !important; 
+}
 
 main { max-width: 1440px; margin: 16px auto; padding: 0 14px; }
 
@@ -234,7 +241,6 @@ body.admin-mode .adminMinimal { display: flex !important; }
 .field label { font-size: 11px; font-weight: 800; color: #2d382e; }
 .field input, .field select, .field textarea { padding: 9px; border: 1px solid var(--line); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 12px; }
 
-/* Contenedor de Contraseña con botón de Ojo */
 .password-wrapper {
   position: relative;
   display: flex;
@@ -302,4 +308,5 @@ body.admin-mode .adminMinimal { display: flex !important; }
   .form, .detailGrid { grid-template-columns: 1fr; }
   .viewSeg button { padding: 6px 8px; font-size: 10px; }
   .btn { padding: 6px 10px; font-size: 10px; }
+  header .headerLoginIcon { width: 32px; height: 32px; font-size: 14px; }
 }
