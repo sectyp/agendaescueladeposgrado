@@ -53,11 +53,41 @@ header {
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
 }
 
-.brand-container { display: flex; align-items: center; gap: 18px; }
-.fca-logo { height: 40px; width: auto; display: block; }
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-.brand h1 { font-size: 20px; margin: 0; color: #fff; letter-spacing: -.02em; font-weight: 800; }
-.brand p { margin: 2px 0 0; color: rgba(255, 255, 255, .9); font-size: 13px; font-weight: 500; }
+.fca-logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-divider {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.brand h1 {
+  font-size: 18px;
+  margin: 0;
+  color: #fff;
+  letter-spacing: -.02em;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, .9);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.1;
+}
 
 .headerActions { display: flex; gap: 10px; align-items: center; }
 

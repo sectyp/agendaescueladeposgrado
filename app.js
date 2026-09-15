@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Credenciales reales del proyecto agenda-posgrado-fca
@@ -240,6 +240,22 @@ window.loginAdminReal = async function() {
     showToast('Sesión iniciada correctamente');
   } catch (error) {
     showToast('Credenciales incorrectas o no autorizadas');
+  }
+};
+
+window.loginAdminGoogle = async function() {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    if (result.user.email === "sectyp@fca.uncu.edu.ar") {
+      document.getElementById('loginModal').classList.remove('open');
+      showToast('Sesión iniciada con Google');
+    } else {
+      await signOut(auth);
+      showToast('Cuenta no autorizada para administrar');
+    }
+  } catch (error) {
+    showToast('Error al autenticar con Google');
   }
 };
 
